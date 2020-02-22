@@ -28,14 +28,14 @@ User  | Retrieves products which <code>userId</code> same as user's and descenda
 ```json
 {
   "data": {
-    "model": "11 model",
+    "model": "modelA3new",
     "description": "22 description",
-    "cost": 100,
-    "standardPrice": 200,
+    "cost": 200,
+    "standardPrice": 600,
     "margin": 1.2,
     "image": "66 image",
     "standard": true,
-    "userId": 2
+    "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa"
   }
 }
 ```
@@ -49,18 +49,18 @@ User  | Retrieves products which <code>userId</code> same as user's and descenda
     "message": "Created"
   },
   "data": {
-    "id": 1,
-    "model": "11 model",
+    "id": "724d78ee-7179-499d-b129-5605b41794a9",
+    "model": "modelA3new",
     "description": "22 description",
-    "cost": 100,
-    "standardPrice": 200,
+    "cost": 200,
+    "standardPrice": 600,
     "margin": 1.2,
     "image": "66 image",
     "standard": true,
-    "userId": 2
-    "companyId": 1,
-    "createdAt": "1559927161",
-    "updatedAt": "1559927161"
+    "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+    "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+    "updatedAt": "2020-02-22T15:57:23.378Z",
+    "createdAt": "2020-02-22T15:57:23.378Z"
   }
 }
 ```
@@ -79,6 +79,8 @@ Admin | Full permission, can create product with admin's <code>companyId</code>.
 User  | Full permission, can create product with user's <code>companyId</code> and <code>userId</code>. but cannot set <code>standard</code> flag to <code>TRUE</code>
 
 <aside class="notice">If you create a product and set <code>standard</code> to <code>false</code> in request body, only you and your ancestors can view the product</aside>
+<aside class="notice">Only admin can assign <code>UserId</code> to <code>false</code> in request body, only you and your ancestors can view the product</aside>
+
 
 ## Get a Specific Product
 

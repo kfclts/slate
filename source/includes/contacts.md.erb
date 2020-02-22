@@ -23,17 +23,15 @@ TBD | true | TBD.
 ```json
 {
   "data": {
-    "name": "11 firstName",
-    "email": "44 email",
+    "name": "contacA3",
+    "email": "contacA3@accountA3.com",
     "phone": "55 phone",
     "mobile": "66 mobile",
     "fax": "77 fax",
     "image": "88 image",
     "title": "99 title",
     "address": "address",
-    "accountId": 3,
-    "userId": 2,
-    "companyId": 3
+    "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3"
   }
 }
 ```
@@ -44,23 +42,23 @@ TBD | true | TBD.
 {
   "status": {
     "status": 201,
-    "message": "Created"
+    "message": "OK"
   },
   "data": {
-    "id": 1,
-    "name": "11 firstName",
-    "email": "44 email",
+    "id": "00596528-decb-4687-b6cd-1e34d5940f32",
+    "name": "contacA3",
+    "email": "contacA3@accountA3.com",
     "phone": "55 phone",
     "mobile": "66 mobile",
     "fax": "77 fax",
     "image": "88 image",
     "title": "99 title",
     "address": "address",
-    "accountId": 3,
-    "userId": 2,
-    "companyId": 2,
-    "createdAt": "1559927161",
-    "updatedAt": "1559927161"
+    "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+    "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+    "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+    "updatedAt": "2020-02-22T15:20:41.824Z",
+    "createdAt": "2020-02-22T15:20:41.824Z"
   }
 }
 ```
@@ -73,10 +71,6 @@ This endpoint creates a contacts.
 <%= partial "/includes/contacts/requestParameters.md.erb"%>
 
 <%= partial "/includes/permission/createData.md.erb" %>
-
-<aside class="notice">At Response Body, <code>userId</code> same as <code>account.userId</code> </aside>
-<aside class="notice">At Response Body,  <code>companyId</code> same as <code>user.companyId</code> </aside>
-
 
 ## Get a Specific Contact
 

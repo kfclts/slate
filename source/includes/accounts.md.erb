@@ -34,7 +34,7 @@ page |
     "webSite": "https://www.apple.com",
     "image": "image",
     "discount": 0.2,
-    "userId": 9
+    "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa"
   }
 }
 ```
@@ -48,7 +48,7 @@ page |
     "message": "Created"
   },
   "data": {
-    "id": 1,
+    "id": "4095d37e-89d0-46de-9d45-9375351da58b",
     "name": "2 englishName",
     "email": "info@sasha.com",
     "address": "3 address",
@@ -59,10 +59,10 @@ page |
     "webSite": "https://www.apple.com",
     "image": "image",
     "discount": 0.2,
-    "userId": 9,
-    "companyId": 2,
-    "createdAt": "1559927161",
-    "updatedAt": "1559927161"
+    "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+    "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+    "updatedAt": "2020-02-22T15:02:44.214Z",
+    "createdAt": "2020-02-22T15:02:44.214Z"
   }
 }
 ```
@@ -78,7 +78,10 @@ About the <code>discount</code> field
 The default <code>sellPrice</code> of <code>Product</code> should be <code>standardPrice * (1 - discount) * 100%</code>.
 </aside>
 <aside class="notice">
-At Response Body, <code>companyId</code> is  <code>user.companyId</code>
+At Response Body, <code>CompanyId</code> is  <code>user.CompanyId</code>
+</aside>
+<aside class="notice">
+Only Admin can assign <code>&lt;UserId&gt;</code>, and it must same as admin's userId
 </aside>
 
 <%= partial "/includes/permission/createData.md.erb" %>
@@ -145,36 +148,20 @@ This endpoint deletes a specific account.
   },
   "data": [
     {
-      "id": 4,
-      "name": "11 firstName",
-      "email": "44 email",
+      "id": "a98b92de-2e7f-49fa-8874-2882b3954733",
+      "name": "contacA3",
+      "email": "contacA3@accountA3.com",
       "phone": "55 phone",
       "mobile": "66 mobile",
       "fax": "77 fax",
       "image": "88 image",
       "title": "99 title",
-      "address": "address",
-      "createdAt": "2019-08-18T15:10:00.000Z",
-      "updatedAt": "2019-08-18T15:10:00.000Z",
-      "companyId": 2,
-      "userId": 6,
-      "accountId": 6
-    },
-    {
-      "id": 5,
-      "name": "11 firstName",
-      "email": "44 email",
-      "phone": "55 phone",
-      "mobile": "66 mobile",
-      "fax": "77 fax",
-      "image": "88 image",
-      "title": "99 title",
-      "address": "address",
-      "createdAt": "2019-08-18T15:10:17.000Z",
-      "updatedAt": "2019-08-18T15:10:17.000Z",
-      "companyId": 2,
-      "userId": 6,
-      "accountId": 6
+      "address": "addressA3",
+      "createdAt": "2020-02-19T13:32:28.000Z",
+      "updatedAt": "2020-02-19T13:36:23.000Z",
+      "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa"
     }
   ]
 }
@@ -194,61 +181,34 @@ This endpoint retrieves contacts from a specific account.
 ```json
 {
   "status": {
-    "status": 200,
-    "message": "OK"
+      "status": 200,
+      "message": "OK"
   },
   "data": [
     {
-      "id": 2,
-      "name": "1",
-      "winRate": "3 winRate",
+      "id": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
+      "name": "projectA3",
+      "winRate": "98.5%",
       "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
       "competitor": "廣達，鴻海",
-      "totalPrice": 0,
-      "cost": 0,
-      "margin": 0,
+      "totalPrice": 34600,
+      "cost": 5750,
+      "margin": 0.833815,
       "closdeDate": "1559927161",
-      "createdAt": "2019-08-18T17:09:56.000Z",
-      "updatedAt": "2019-08-18T17:09:56.000Z",
-      "companyId": 2,
-      "userId": 6,
-      "accountId": 6,
-      "contactId": 5,
-      "account": {
-        "id": 6,
-        "name": "2englishName",
+      "createdAt": "2020-02-19T13:44:15.000Z",
+      "updatedAt": "2020-02-22T12:09:37.000Z",
+      "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+      "ContactId": "a98b92de-2e7f-49fa-8874-2882b3954733",
+      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+      "Account": {
+        "id": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+        "name": "accountA3",
         "image": "image"
       },
-      "contact": {
-        "id": 5,
-        "name": "11 firstName",
-        "image": "88 image"
-      }
-    },
-    {
-      "id": 3,
-      "name": "1",
-      "winRate": "3 winRate",
-      "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
-      "competitor": "廣達，鴻海",
-      "totalPrice": 0,
-      "cost": 0,
-      "margin": 0,
-      "closdeDate": "1559927161",
-      "createdAt": "2019-08-19T03:18:19.000Z",
-      "updatedAt": "2019-08-19T03:18:19.000Z",
-      "companyId": null,
-      "userId": 6,
-      "accountId": 6,
-      "contactId": 5,
-      "account": {
-        "id": 6,
-        "name": "2englishName",
-        "image": "image"
-      },
-      "contact": {
-        "id": 5,
-        "name": "11 firstName",
+      "Contact": {
+        "id": "a98b92de-2e7f-49fa-8874-2882b3954733",
+        "name": "contacA3",
         "image": "88 image"
       }
     }
@@ -274,67 +234,67 @@ This endpoint retrieves projects from a specific account.
   },
   "data": [
     {
-      "id": 1,
-      "name": "Project P1",
+      "id": "09cae17d-298c-443d-b966-268b30f77d71",
+      "name": "QuotationA3",
       "expriretionDate": "data.expriretionDate",
-      "totalPrice": 0,
-      "cost": 0,
-      "margin": 0,
+      "totalPrice": 1900,
+      "cost": 350,
+      "margin": 0.815789,
       "currency": "USD",
       "paymentTerm": "TT Advance",
       "number": "IP-85008122",
-      "createdAt": "2019-08-25T10:23:22.000Z",
-      "updatedAt": "2019-08-25T10:23:22.000Z",
-      "companyId": 2,
-      "userId": 3,
-      "accountId": 9,
-      "contactId": 1,
-      "projectId": 1,
-      "account": {
-        "id": 9,
-        "name": "2englishName",
+      "createdAt": "2020-02-22T06:22:17.000Z",
+      "updatedAt": "2020-02-22T06:22:18.000Z",
+      "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+      "ContactId": "a98b92de-2e7f-49fa-8874-2882b3954733",
+      "ProjectId": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
+      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+      "Account": {
+        "id": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+        "name": "accountA3",
         "image": "image"
       },
-      "contact": {
-        "id": 1,
-        "name": "11 firstName",
+      "Contact": {
+        "id": "a98b92de-2e7f-49fa-8874-2882b3954733",
+        "name": "contacA3",
         "image": "88 image"
       },
-      "project": {
-        "id": 1,
-        "name": "1"
+      "Project": {
+        "id": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
+        "name": "projectA3"
       }
     },
     {
-      "id": 2,
-      "name": "Project P2",
+      "id": "22051740-c82b-4616-abd5-f2977165f2f9",
+      "name": "QuotationA3",
       "expriretionDate": "data.expriretionDate",
-      "totalPrice": 20000,
-      "cost": 24000,
-      "margin": -0.2,
+      "totalPrice": 1900,
+      "cost": 350,
+      "margin": 0.815789,
       "currency": "USD",
       "paymentTerm": "TT Advance",
       "number": "IP-85008122",
-      "createdAt": "2019-08-30T17:59:12.000Z",
-      "updatedAt": "2019-08-31T04:44:52.000Z",
-      "companyId": 2,
-      "userId": 3,
-      "accountId": 9,
-      "contactId": 1,
-      "projectId": 1,
-      "account": {
-        "id": 9,
-        "name": "2englishName",
+      "createdAt": "2020-02-22T07:18:29.000Z",
+      "updatedAt": "2020-02-22T07:18:29.000Z",
+      "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+      "ContactId": "a98b92de-2e7f-49fa-8874-2882b3954733",
+      "ProjectId": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
+      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+      "Account": {
+        "id": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+        "name": "accountA3",
         "image": "image"
       },
-      "contact": {
-        "id": 1,
-        "name": "11 firstName",
+      "Contact": {
+        "id": "a98b92de-2e7f-49fa-8874-2882b3954733",
+        "name": "contacA3",
         "image": "88 image"
       },
-      "project": {
-        "id": 1,
-        "name": "1"
+      "Project": {
+        "id": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
+        "name": "projectA3"
       }
     }
   ]

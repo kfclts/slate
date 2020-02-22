@@ -20,8 +20,8 @@
   },
   "data": {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb21wYW55SWQiOjEsInVzZXJJZCI6MSwidXNlclJvbGUiOiJyb290IiwiaWF0IjoxNTU5NTU0NjUwLCJleHAiOjE1NTk1NjU0NTB9.hioKNZnAstYk8QRHJf-djiwK7kjr6Pjn8isc9W7_eyM",
-    "userId": "1",
-    "companyId": "1"
+    "userId": "04885878-13ea-44df-bcf1-bde17c6ed59d",
+    "companyId": "4491eb60-6569-4faf-9039-3653723d5ccf"
   }
 }
 ```
@@ -79,7 +79,7 @@ User  | Full permission.
 
 ```json
 {
-    "userId": "1",
+    "userId": "04885878-13ea-44df-bcf1-bde17c6ed59d",
     "reset_email":"https://api.heysasha.com/QWEQ!@#1213fjslfkjqweQW"
 }
 ```

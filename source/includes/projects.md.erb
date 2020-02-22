@@ -23,11 +23,11 @@ This endpoint retrieves all projects.
 ```json
 {
   "data": {
-    "name": "1 localName",
-    "winRate": "3 winRate",
+    "name": "projectA31",
+    "winRate": "98%",
     "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
     "competitor": "廣達，鴻海",
-    "contactId": 2,
+    "ContactId": "00596528-decb-4687-b6cd-1e34d5940f32",
     "closdeDate": "1559927161"
   }
 }
@@ -42,17 +42,21 @@ This endpoint retrieves all projects.
     "message": "Created"
   },
   "data": {
-    "id": 1,
-    "name": "1 localName",
-    "winRate": "3 winRate",
+    "id": "323150db-31be-415f-a757-592910a54bdc",
+    "name": "projectA31",
+    "winRate": "98%",
     "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
     "competitor": "廣達，鴻海",
-    "contactId": 2,
-    "accountId": 2,
-    "userId": 2,
-    "closdeDate": "1559927161"
-    "updatedAt": "1559927161",
-    "createdAt": "1559927161"
+    "totalPrice": 0,
+    "cost": 0,
+    "margin": 0,
+    "closdeDate": "1559927161",
+    "ContactId": "00596528-decb-4687-b6cd-1e34d5940f32",
+    "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+    "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+    "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+    "updatedAt": "2020-02-22T15:33:41.309Z",
+    "createdAt": "2020-02-22T15:33:41.309Z"
   }
 }
 ```
@@ -115,68 +119,64 @@ This endpoint deletes a specific project.
     "status": 200,
     "message": "OK"
   },
-  "data": {
-    "list": {
-      "quotations": [
-        {
-          "id": 1,
-          "name": "Project P1",
-          "expriretionDate": "data.expriretionDate",
-          "totalPrice": 0,
-          "cost": 0,
-          "margin": 0,
-          "currency": "USD",
-          "paymentTerm": "TT Advance",
-          "number": "IP-85008122",
-          "createdAt": "2019-08-25T10:23:22.000Z",
-          "updatedAt": "2019-08-25T10:23:22.000Z",
-          "companyId": 2,
-          "userId": 3,
-          "accountId": 9,
-          "contactId": 1,
-          "projectId": 1,
-          "account": {
-            "id": 9,
-            "name": "2englishName",
-            "image": "image"
-          },
-          "contact": {
-            "id": 1,
-            "name": "11 firstName",
-            "image": "88 image"
-          }
-        },
-        {
-          "id": 2,
-          "name": "Project P2",
-          "expriretionDate": "data.expriretionDate",
-          "totalPrice": 20000,
-          "cost": 24000,
-          "margin": -0.2,
-          "currency": "USD",
-          "paymentTerm": "TT Advance",
-          "number": "IP-85008122",
-          "createdAt": "2019-08-30T17:59:12.000Z",
-          "updatedAt": "2019-08-31T04:44:52.000Z",
-          "companyId": 2,
-          "userId": 3,
-          "accountId": 9,
-          "contactId": 1,
-          "projectId": 1,
-          "account": {
-            "id": 9,
-            "name": "2englishName",
-            "image": "image"
-          },
-          "contact": {
-            "id": 1,
-            "name": "11 firstName",
-            "image": "88 image"
-          }
-        }
-      ]
+  "data": [
+    {
+      "id": "09cae17d-298c-443d-b966-268b30f77d71",
+      "name": "QuotationA3",
+      "expriretionDate": "data.expriretionDate",
+      "totalPrice": 1900,
+      "cost": 350,
+      "margin": 0.815789,
+      "currency": "USD",
+      "paymentTerm": "TT Advance",
+      "number": "IP-85008122",
+      "createdAt": "2020-02-22T06:22:17.000Z",
+      "updatedAt": "2020-02-22T06:22:18.000Z",
+      "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+      "ContactId": "a98b92de-2e7f-49fa-8874-2882b3954733",
+      "ProjectId": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
+      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+      "Account": {
+        "id": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+        "name": "accountA3",
+        "image": "image"
+      },
+      "Contact": {
+        "id": "a98b92de-2e7f-49fa-8874-2882b3954733",
+        "name": "contacA3",
+        "image": "88 image"
+      }
+    },
+    {
+      "id": "22051740-c82b-4616-abd5-f2977165f2f9",
+      "name": "QuotationA3",
+      "expriretionDate": "data.expriretionDate",
+      "totalPrice": 1900,
+      "cost": 350,
+      "margin": 0.815789,
+      "currency": "USD",
+      "paymentTerm": "TT Advance",
+      "number": "IP-85008122",
+      "createdAt": "2020-02-22T07:18:29.000Z",
+      "updatedAt": "2020-02-22T07:18:29.000Z",
+      "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+      "ContactId": "a98b92de-2e7f-49fa-8874-2882b3954733",
+      "ProjectId": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
+      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+      "Account": {
+        "id": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
+        "name": "accountA3",
+        "image": "image"
+      },
+      "Contact": {
+        "id": "a98b92de-2e7f-49fa-8874-2882b3954733",
+        "name": "contacA3",
+        "image": "88 image"
+      }
     }
-  }
+  ]
 }
 ```
 
@@ -194,7 +194,7 @@ This endpoint retrieves quotations from a specific project.
 ```json
 {
   "data": {
-    "description": "3 Updates"
+    "description": "UpdateA3"
   }
 }
 ```
@@ -208,12 +208,12 @@ This endpoint retrieves quotations from a specific project.
     "message": "Created"
   },
   "data": {
-    "id": 5,
-    "description": "3 Updates",
-    "projectId": 1,
-    "userId": 2,
-    "updatedAt": "2019-08-19T07:42:32.494Z",
-    "createdAt": "2019-08-19T07:42:32.494Z"
+    "id": "4a606630-61ac-4760-8bd2-4d4484918cb0",
+    "description": "UpdateA3me",
+    "ProjectId": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
+    "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+    "updatedAt": "2020-02-22T15:47:17.137Z",
+    "createdAt": "2020-02-22T15:47:17.137Z"
   }
 }
 ```
@@ -242,34 +242,20 @@ This endpoint creates a update for a specific projects.
     "status": 200,
     "message": "OK"
   },
-  "data": {
-    "list": [
-      {
-        "id": 1,
-        "description": "First Updates",
-        "createdAt": "2019-08-19T07:11:41.000Z",
-        "updatedAt": "2019-08-19T07:11:41.000Z",
-        "user": {
-          "id": 2,
-          "name": "Kong",
-          "title": "CTO",
-          "image": "K"
-        }
-      },
-      {
-        "id": 2,
-        "description": "First Updates",
-        "createdAt": "2019-08-19T07:12:48.000Z",
-        "updatedAt": "2019-08-19T07:12:48.000Z",
-        "user": {
-          "id": 2,
-          "name": "Kong",
-          "title": "CTO",
-          "image": "K"
-        }
+  "data": [
+    {
+      "id": "7895e927-7d5d-415e-8dcf-b6de589d664b",
+      "description": "UpdateA3",
+      "createdAt": "2020-02-21T09:10:08.000Z",
+      "updatedAt": "2020-02-21T09:10:08.000Z",
+      "User": {
+        "id": "04885878-13ea-44df-bcf1-bde17c6ed59d",
+        "name": "userA",
+        "title": "CTO",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/8/89/Army_%28ROCA%29_General_Chang_Guan-chung_陸軍上將張冠群_%2820170428_總統主持「國軍重要高階幹部授勳暨晉任佈達授階典禮」_01m07s%29.jpg"
       }
-    ]
-  }
+    }
+  ]
 }
 ```
 
