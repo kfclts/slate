@@ -1,0 +1,113 @@
+# Contacts
+
+## Get All Contacts
+
+<%= partial "/includes/contacts/getData.md.erb" %>
+
+This endpoint retrieves all contacts.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/contacts`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+TBD | false | TBD.
+TBD | true | TBD.
+
+<%= partial "/includes/permission/getData.md.erb" %>
+
+## Create a Contact
+
+> Example Request Body
+
+```json
+{
+  "data": {
+    "name": "11 firstName",
+    "email": "44 email",
+    "phone": "55 phone",
+    "mobile": "66 mobile",
+    "fax": "77 fax",
+    "image": "88 image",
+    "title": "99 title",
+    "address": "address",
+    "accountId": 3,
+    "userId": 2,
+    "companyId": 3
+  }
+}
+```
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 201,
+    "message": "Created"
+  },
+  "data": {
+    "id": 1,
+    "name": "11 firstName",
+    "email": "44 email",
+    "phone": "55 phone",
+    "mobile": "66 mobile",
+    "fax": "77 fax",
+    "image": "88 image",
+    "title": "99 title",
+    "address": "address",
+    "accountId": 3,
+    "userId": 2,
+    "companyId": 2,
+    "createdAt": "1559927161",
+    "updatedAt": "1559927161"
+  }
+}
+```
+
+This endpoint creates a contacts.
+
+### HTTP Request
+<span class="method-post">POST</span> `/v1/contacts`
+
+<%= partial "/includes/contacts/requestParameters.md.erb"%>
+
+<%= partial "/includes/permission/createData.md.erb" %>
+
+<aside class="notice">At Response Body, <code>userId</code> same as <code>account.userId</code> </aside>
+<aside class="notice">At Response Body,  <code>companyId</code> same as <code>user.companyId</code> </aside>
+
+
+## Get a Specific Contact
+
+<%= partial "/includes/contacts/getOne.md.erb"%>
+
+This endpoint retrieves a specific contacts.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/contacts/:contactId`
+
+<%= partial "/includes/permission/getData.md.erb"%>
+
+## Update a Specific Contact
+
+<%= partial "/includes/contacts/updateData.md.erb"%>
+
+This endpoint updates a specific contact.
+### HTTP Request
+<span class="method-patch">PATCH</span> `/v1/contacts/:contactId`
+
+<%= partial "/includes/contacts/requestParameters.md.erb"%>
+
+<%= partial "/includes/permission/updateData.md.erb"%>
+
+<aside class="notice">If you are not admin, but trying to store <code>userId</code> inside request body, the server will ignore it.</aside>
+
+## Delete a Specific Contact
+
+<%= partial "/includes/common/deleteResponse.md.erb"%>
+
+This endpoint deletes a specific contact.
+### HTTP Request
+<span class="method-delete">DELETE</span>`/v1/contacts/:contactId`
+
+<%= partial "/includes/permission/deleteData.md.erb" %>

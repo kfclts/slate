@@ -1,0 +1,714 @@
+# Companies
+
+## Get All Companies `root`
+<!-- > Example Request Body -->
+
+<%= partial "/includes/companies/getData.md.erb"%>
+
+This endpoint retrieves all companies.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/companies`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+sortBy | id | TBD.
+filterBy | N/A | TBD.
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Forbidden
+User  | Forbidden
+
+## Create a Company `root`
+
+> Example Request Body
+
+```json
+{
+  "data": {
+    "name": "莎夏",
+    "email": "info@sasha.com",
+    "address": "Taipei City",
+    "invoiceAddress": "4 .Invoice Address",
+    "deliveryAddress": "5 .Delivery Address",
+    "tel": "027877878",
+    "vatNumber": "234569876",
+    "webSite": "https://www.apple.com",
+    "image": "image",
+    "taxRate": 0.05,
+    "profit": 0.3,
+    "owner": ""
+  }
+}
+```
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 201,
+    "message": "Created"
+  },
+  "data": {
+    "id": "2",
+    "name": "莎夏",
+    "email": "info@sasha.com",
+    "address": "Taipei City",
+    "invoiceAddress": "4 .Invoice Address",
+    "deliveryAddress": "5 .Delivery Address",
+    "tel": "027877878",
+    "vatNumber": "234569876",
+    "webSite": "https://www.apple.com",
+    "image": "image",
+    "taxRate": 0.05,
+    "profit": 0.3,
+    "owner": "",
+    "createdAt": "1559927161",
+    "updatedAt": "1559927161"
+  }
+}
+```
+
+This endpoint creates a company.
+### HTTP Request
+<span class="method-post">POST</span> `/v1/companies`
+
+<%= partial "/includes/companies/requestParameters.md.erb"%>
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Forbidden.
+User  | Forbidden.
+
+<aside class="notice">
+About the <code>profit</code> field
+The default <code>standardPrice</code> of <code>Product</code> should be <code>(productCost/profit) * 100%</code>.
+</aside>
+
+## Get a Specific Company `root`
+
+<%= partial "/includes/companies/getOne.md.erb"%>
+
+This endpoint retrieves a specific company.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/companies/:companyId`
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission
+Admin | Can only retrieve company which <code>id</code> same as admin's <code>companyId</code>.
+User  | Can only retrieve company which <code>id</code> same as user's <code>companyId</code>.
+
+<aside class="warning">
+If you are not rooot, no matter the <code>&lt;companyId&gt;</code> you pass at url prameter, you can only get the company which <code>&lt;companyId&gt;</code> same as yours
+</aside>
+
+## Update a Specific Company `root`
+
+<%= partial "/includes/companies/updateData.md.erb"%>
+
+This endpoint updates a specific company.
+### HTTP Request
+<span class="method-patch">PATCH</span>`/v1/companies/:companyId`
+
+<%= partial "/includes/companies/requestParameters.md.erb"%>
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Forbidden.
+User  | Forbidden.
+
+
+## Delete a Specific Company `root`
+
+<%= partial "/includes/common/deleteResponse.md.erb"%>
+
+This endpoint deletes a specific company.
+### HTTP Request
+<span class="method-delete">DELETE</span>`/v1/companies/:companyId`
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Forbidden.
+User  | Forbidden.
+
+
+## Get Users from a Specific Company `root`
+
+<%= partial "/includes/users/getData.md.erb"%>
+
+This endpoint get users from a specific company.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/companies/:companyId/users`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+TBD | false | TBD.
+TBD | true | TBD.
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Forbidden.
+User  | Forbidden.
+
+
+## Create an Admin for a Specific Company `root`
+
+> Example Request Body
+
+```json
+{
+  "data": {
+    "name": "Kong",
+    "email": "4ab@gm.co",
+    "phone": "55 phone",
+    "mobile": "+886952318999",
+    "fax": "+886952318999",
+    "image": "K",
+    "title": "CTO",
+    "address": "address",
+    "password": "1234567890"
+  }
+}
+```
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 201,
+    "message": "Created"
+  },
+  "data": {
+    "id": 3,
+    "name": "Kong",
+    "email": "44 email",
+    "phone": "55 phone",
+    "mobile": "+886952318999",
+    "fax": "+886952318999",
+    "image": "K",
+    "title": "CTO",
+    "address": "address",
+    "createdAt": "1559927161",
+    "updatedAt": "1559927161",
+    "password": "$2a$12$7uHqDmqEw9gAcdr9GZwzfeQcqCAzzx1mbwGQ/uJtrFkMyyDwWjb4m",
+    "role": "admin",
+    "hierarchyLevel": 2,
+    "parentId": 1,
+    "companyId": 2
+  }
+}
+```
+
+This endpoint create an Admin for a specific company.
+### HTTP Request
+<span class="method-post">POST</span>`/v1/companies/:companyId/users`
+
+<%= partial "/includes/users/requestParameters.md.erb"%>
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Forbidden.
+User  | Forbidden.
+
+
+<!--
+## Get a Specific User `root`
+## Update a Specific User `root`
+## Delete a Specific User `root`
+-->
+
+## Get Accounts from a Specific Company `root`
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "name": "2englishName",
+        "email": "info@sasha.com",
+        "address": "3 address",
+        "invoiceAddress": "4 .Invoice Address",
+        "deliveryAddress": "5 .Delivery Address",
+        "tel": "6 phone",
+        "vatNumber": "7 vatNumber",
+        "webSite": "https://www.apple.com",
+        "image": "image",
+        "discount": 0.2,
+        "createdAt": "2019-08-17T16:19:30.000Z",
+        "updatedAt": "2019-08-17T16:47:44.000Z",
+        "companyId": 2,
+        "userId": 3,
+        "user": {
+          "id": 3,
+          "name": "Kang",
+          "image": "K"
+        }
+      },
+      {
+        "id": 6,
+        "name": "2englishName",
+        "email": "info@sasha.com",
+        "address": "3 address",
+        "invoiceAddress": "4 .Invoice Address",
+        "deliveryAddress": "5 .Delivery Address",
+        "tel": "6 phone",
+        "vatNumber": "7 vatNumber",
+        "webSite": "https://www.apple.com",
+        "image": "image",
+        "discount": 0.2,
+        "createdAt": "2019-08-17T16:57:14.000Z",
+        "updatedAt": "2019-08-17T16:57:14.000Z",
+        "companyId": 2,
+        "userId": 6,
+        "user": {
+          "id": 6,
+          "name": "bb",
+          "image": "K"
+        }
+      }
+    ]
+  }
+}
+```
+This endpoint retrieves accounts from a specific company.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/companies/:companyId/accounts`
+
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Forbidden.
+User  | Forbidden.
+
+
+<!--
+## Create an Account for a Specific Company `root`
+## Get a Specific Account `root`
+## Update a Specific Account `root`
+## Delete a Specific Account `root`
+-->
+
+## Get Contacts from a Specific Company `root`
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "name": "11 firstName",
+        "email": "44 email",
+        "phone": "55 phone",
+        "mobile": "66 mobile",
+        "fax": "77 fax",
+        "image": "88 image",
+        "title": "99 title",
+        "address": "address",
+        "createdAt": "2019-08-18T04:38:01.000Z",
+        "updatedAt": "2019-08-18T04:38:01.000Z",
+        "companyId": 2,
+        "userId": 3,
+        "accountId": 9,
+        "user": {
+          "id": 3,
+          "name": "Kang",
+          "image": "K"
+        },
+        "account": {
+          "id": 9,
+          "name": "2englishName",
+          "image": "image"
+        }
+      },
+      {
+        "id": 2,
+        "name": "11",
+        "email": "44",
+        "phone": "55",
+        "mobile": "66",
+        "fax": "77",
+        "image": "88",
+        "title": "99",
+        "address": "address",
+        "createdAt": "2019-08-18T04:40:32.000Z",
+        "updatedAt": "2019-08-18T07:29:21.000Z",
+        "companyId": 2,
+        "userId": 3,
+        "accountId": 9,
+        "user": {
+          "id": 3,
+          "name": "Kang",
+          "image": "K"
+        },
+        "account": {
+          "id": 9,
+          "name": "2englishName",
+          "image": "image"
+        }
+      }
+    ]
+  }
+}
+```
+This endpoint retrieves contacts from a specific company.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/companies/:companyId/contacts`
+
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Forbidden.
+User  | Forbidden.
+
+<!--
+## Create a Contact for a Specific Company `root`
+## Get a Specific Contact `root`
+## Update a Specific Contact `root`
+## Delete a Specific Contact `root`
+-->
+
+
+## Get Projects from a Specific Company `root`
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "name": "1",
+        "winRate": "3 winRate",
+        "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
+        "competitor": "廣達，鴻海",
+        "totalPrice": 20000,
+        "cost": 24000,
+        "margin": -0.2,
+        "closdeDate": "1559927161",
+        "createdAt": "2019-08-18T16:37:41.000Z",
+        "updatedAt": "2019-08-31T04:44:52.000Z",
+        "companyId": 2,
+        "userId": 3,
+        "accountId": 9,
+        "contactId": 1,
+        "user": {
+          "id": 3,
+          "name": "Kang",
+          "image": "K"
+        },
+        "account": {
+          "id": 9,
+          "name": "2englishName",
+          "image": "image"
+        },
+        "contact": {
+          "id": 1,
+          "name": "11 firstName",
+          "image": "88 image"
+        }
+      },
+      {
+        "id": 2,
+        "name": "1",
+        "winRate": "3 winRate",
+        "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
+        "competitor": "廣達，鴻海",
+        "totalPrice": 0,
+        "cost": 0,
+        "margin": 0,
+        "closdeDate": "1559927161",
+        "createdAt": "2019-08-18T17:09:56.000Z",
+        "updatedAt": "2019-08-18T17:09:56.000Z",
+        "companyId": 2,
+        "userId": 6,
+        "accountId": 6,
+        "contactId": 5,
+        "user": {
+          "id": 6,
+          "name": "bb",
+          "image": "K"
+        },
+        "account": {
+          "id": 6,
+          "name": "2englishName",
+          "image": "image"
+        },
+        "contact": {
+          "id": 5,
+          "name": "11 firstName",
+          "image": "88 image"
+        }
+      }
+    ]
+  }
+}
+```
+This endpoint retrieves projects from a specific company.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/companies/:companyId/projects`
+
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Forbidden.
+User  | Forbidden.
+
+<!--
+## Create a Project for a Specific Company `root`
+## Get a Specific Project `root`
+## Update a Specific Project `root`
+## Delete a Specific Project `root`
+-->
+
+
+## Get Quotations from a Specific Company `root`
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "name": "Project P1",
+        "expriretionDate": "data.expriretionDate",
+        "totalPrice": 0,
+        "cost": 0,
+        "margin": 0,
+        "currency": "USD",
+        "paymentTerm": "TT Advance",
+        "number": "IP-85008122",
+        "createdAt": "2019-08-25T10:23:22.000Z",
+        "updatedAt": "2019-08-25T10:23:22.000Z",
+        "companyId": 2,
+        "userId": 3,
+        "accountId": 9,
+        "contactId": 1,
+        "projectId": 1,
+        "user": {
+          "id": 3,
+          "name": "Kang",
+          "image": "K"
+        },
+        "account": {
+          "id": 9,
+          "name": "2englishName",
+          "image": "image"
+        },
+        "contact": {
+          "id": 1,
+          "name": "11 firstName",
+          "image": "88 image"
+        },
+        "project": {
+          "id": 1,
+          "name": "1"
+        }
+      },
+      {
+        "id": 2,
+        "name": "Project P2",
+        "expriretionDate": "data.expriretionDate",
+        "totalPrice": 20000,
+        "cost": 24000,
+        "margin": -0.2,
+        "currency": "USD",
+        "paymentTerm": "TT Advance",
+        "number": "IP-85008122",
+        "createdAt": "2019-08-30T17:59:12.000Z",
+        "updatedAt": "2019-08-31T04:44:52.000Z",
+        "companyId": 2,
+        "userId": 3,
+        "accountId": 9,
+        "contactId": 1,
+        "projectId": 1,
+        "user": {
+          "id": 3,
+          "name": "Kang",
+          "image": "K"
+        },
+        "account": {
+          "id": 9,
+          "name": "2englishName",
+          "image": "image"
+        },
+        "contact": {
+          "id": 1,
+          "name": "11 firstName",
+          "image": "88 image"
+        },
+        "project": {
+          "id": 1,
+          "name": "1"
+        }
+      }
+    ]
+  }
+}
+```
+This endpoint retrieves quotations from a specific company.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/companies/:companyId/quotations`
+
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Forbidden.
+User  | Forbidden.
+
+<!--
+## Create a Quotation for a Specific Company `root`
+## Get a Specific Quotation `root`
+## Update a Specific Quotation `root`
+## Delete a Specific Quotation `root`
+-->
+
+
+## Get Products from a Specific Company `root`
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "model": "admin 1",
+        "description": "2 description",
+        "cost": 200,
+        "standardPrice": 300,
+        "margin": 1.5,
+        "image": "6 image",
+        "standard": true,
+        "createdAt": "2019-08-20T06:13:03.000Z",
+        "updatedAt": "2019-08-20T06:13:58.000Z",
+        "companyId": 2,
+        "userId": 2,
+        "user": {
+          "id": 2,
+          "name": "Kong",
+          "image": "K"
+        }
+      },
+      {
+        "id": 2,
+        "model": "admin 2",
+        "description": "2 description",
+        "cost": 200,
+        "standardPrice": 300,
+        "margin": 1.5,
+        "image": "6 image",
+        "standard": true,
+        "createdAt": "2019-08-20T06:13:28.000Z",
+        "updatedAt": "2019-08-20T06:14:05.000Z",
+        "companyId": 2,
+        "userId": 2,
+        "user": {
+          "id": 2,
+          "name": "Kong",
+          "image": "K"
+        }
+      }
+    ]
+  }
+}
+```
+This endpoint retrieves products from a specific company.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/companies/:companyId/products`
+
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Forbidden.
+User  | Forbidden.
+
+<!--
+## Create a Product for a Specific Company `root`
+## Get a Specific Product `root`
+## Update a Specific Product `root`
+## Delete a Specific Product `root`
+
+## Get My Company
+
+<%= partial "/includes/companies/getOne.md.erb"%>
+
+This endpoint retrieves my company.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/companies/me`
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission
+Admin | Full permission
+User  | Full permission
+
+<aside class="warning">
+If you are not rooot, no matter the <code>&lt;companyId&gt;</code> you pass at url prameter, you can only get the company which <code>&lt;companyId&gt;</code> same as yours
+</aside>
+
+## Update My Company
+
+<%= partial "/includes/companies/updateData.md.erb"%>
+
+This endpoint updates my company.
+### HTTP Request
+<span class="method-patch">PATCH</span>`/v1/companies/me`
+
+<%= partial "/includes/companies/requestParameters.md.erb"%>
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Can only updates company which <code>id</code> same as admin's <code>companyId</code>.
+User  | Forbidden.
+-->

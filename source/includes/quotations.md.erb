@@ -1,0 +1,195 @@
+# Quotations `TBD`
+
+## Get All Quotations `TBD`
+
+<%= partial "/includes/quotations/getData.md.erb" %>
+
+This endpoint retrieves all quotations.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/quotations`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+TBD | false | TBD.
+TBD | true | TBD.
+
+<%= partial "/includes/permission/getData.md.erb" %>
+
+## Create a Quotation `TBD`
+
+> Example Request Body
+
+```json
+{
+  "data": {
+    "name": "Project P1",
+    "description": "data.description",
+    "expriretionDate": "data.expriretionDate",
+    "totalPrice": 0,    // TBD
+    "totalMargin": 0,   // TBD
+    "currency": "USD",
+    "paymentTerm": "TT Advance",
+    "number": "IP-85008122",
+    "projectId": 1,
+    "contactId": 3
+  }
+}
+```
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 201,
+    "message": "Created"
+  },
+  "data": {
+    "id": 1,
+    "name": "Project P1",
+    "expriretionDate": "data.expriretionDate",
+    "totalPrice": 0,
+    "totalMargin": 0,
+    "currency": "USD",
+    "paymentTerm": "TT Advance",
+    "number": "IP-85008122",
+    "projectId": 1,
+    "contactId": 1,
+    "accountId": 9,
+    "userId": 3,
+    "companyId": 2,
+    "updatedAt": "2019-08-25T10:23:22.825Z",
+    "createdAt": "2019-08-25T10:23:22.825Z"
+  }
+}
+```
+
+This endpoint creates a quotation.
+### HTTP Request
+<span class="method-post">POST</span> `/v1/quotations`
+
+<%= partial "/includes/quotations/requestParameters.md.erb" %>
+
+<%= partial "/includes/permission/createData.md.erb" %>
+
+<aside class="notice">If you are not admin, but trying to store <code>userId</code> inside request body, the server will ignore it.</aside>
+
+## Get a Specific Quotation `TBD`
+
+<%= partial "/includes/quotations/getOne.md.erb" %>
+
+This endpoint retrieves a specific quotation.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/quotations/:quotationId`
+
+<%= partial "/includes/permission/getData.md.erb" %>
+
+## Update a Specific Quotation `TBD`
+
+<%= partial "/includes/quotations/updateData.md.erb" %>
+
+This endpoint updates a specific quotation.
+### HTTP Request
+<span class="method-patch">PATCH</span> `/v1/quotations/:quotationId`
+
+<%= partial "/includes/quotations/requestParameters.md.erb" %>
+
+<%= partial "/includes/permission/updateData.md.erb" %>
+
+<aside class="warning">Once the quotaion has been created, no one can modify it.</aside>
+
+## Delete a Specific Quotation `TBD`
+
+<%= partial "/includes/common/deleteResponse.md.erb" %>
+
+This endpoint deletes a specific quotation.
+### HTTP Request
+<span class="method-delete">DELETE</span>`/v1/quotations/:quotationId`
+
+<%= partial "/includes/permission/deleteData.md.erb" %>
+
+## Get Products from a Specific Quotation `TBD`
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": [
+      {
+        "id": 26,
+        "model": "admin 1",
+        "quantity": 10,
+        "cost": 2000,
+        "sellPrice": 500,
+        "totalPrice": 5000,
+        "margin": 0.6,
+        "createdAt": "2019-08-31T04:22:49.000Z",
+        "updatedAt": "2019-08-31T04:22:49.000Z",
+        "quotationId": 2,
+        "productId": 1
+      },
+      {
+        "id": 27,
+        "model": "admin 2",
+        "quantity": 10,
+        "cost": 2000,
+        "sellPrice": 500,
+        "totalPrice": 5000,
+        "margin": 0.6,
+        "createdAt": "2019-08-31T04:44:33.000Z",
+        "updatedAt": "2019-08-31T04:44:33.000Z",
+        "quotationId": 2,
+        "productId": 2
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves products from a specific quotation.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/quotations/:quotationId/products`
+
+<%= partial "/includes/permission/getData.md.erb" %>
+
+
+## Create Products for a Specific Quotation `TBD`
+This endpoint create products from a specific quotation.
+### HTTP Request
+<span class="method-post">POST</span>`/v1/quotations/:quotationId/products`
+
+> Example Request Body
+
+```json
+{
+  "data": [
+    {
+      "productId": 2,
+      "quantity": 5,
+      "sellPrice": 300
+    },
+    {
+      "productId": 3,
+      "quantity": 4,
+      "sellPrice": 800
+    }
+  ]
+}
+```
+
+<%= partial "/includes/quotations/getOne.md.erb" %>
+
+### Request Body Parameters
+Parameter | Required | Format | Validation
+--------- | ----------- | ----------- | -----------
+id | TRUE | Int | isInt
+quantity | TRUE | Int | isInt
+sellPrice | TRUE | Float |isFloat
+
+<%= partial "/includes/permission/createData.md.erb" %>

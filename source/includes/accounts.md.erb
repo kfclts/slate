@@ -1,0 +1,348 @@
+# Accounts
+
+## Get All Accounts
+
+<%= partial "/includes/accounts/getData.md.erb"%>
+
+This endpoint retrieves all accounts.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/accounts`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+sort | false | TBD.
+filter | true | TBD.
+page |
+
+<%= partial "/includes/permission/getData.md.erb" %>
+
+## Create an Account
+
+> Example Request Body
+
+```json
+{
+  "data": {
+    "name": "2 englishName",
+    "email": "info@sasha.com",
+    "address": "3 address",
+    "invoiceAddress": "4 .Invoice Address",
+    "deliveryAddress": "5 .Delivery Address",
+    "tel": "6 phone",
+    "vatNumber": "7 vatNumber",
+    "webSite": "https://www.apple.com",
+    "image": "image",
+    "discount": 0.2,
+    "userId": 9
+  }
+}
+```
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 201,
+    "message": "Created"
+  },
+  "data": {
+    "id": 1,
+    "name": "2 englishName",
+    "email": "info@sasha.com",
+    "address": "3 address",
+    "invoiceAddress": "4 .Invoice Address",
+    "deliveryAddress": "5 .Delivery Address",
+    "tel": "6 phone",
+    "vatNumber": "7 vatNumber",
+    "webSite": "https://www.apple.com",
+    "image": "image",
+    "discount": 0.2,
+    "userId": 9,
+    "companyId": 2,
+    "createdAt": "1559927161",
+    "updatedAt": "1559927161"
+  }
+}
+```
+
+This endpoint creates an account.
+### HTTP Request
+<span class="method-post">POST</span> `/v1/accounts`
+
+<%= partial "/includes/accounts/requestParameters.md.erb"%>
+
+<aside class="notice">
+About the <code>discount</code> field
+The default <code>sellPrice</code> of <code>Product</code> should be <code>standardPrice * (1 - discount) * 100%</code>.
+</aside>
+<aside class="notice">
+At Response Body, <code>companyId</code> is  <code>user.companyId</code>
+</aside>
+
+<%= partial "/includes/permission/createData.md.erb" %>
+
+<aside class="notice">If you are not admin, but trying to store <code>userId</code> inside request body, the server will ignore it.</aside>
+
+## Get a Specific Account
+
+<%= partial "/includes/accounts/getOne.md.erb" %>
+
+This endpoint retrieves a specific account.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/accounts/:accountId`
+
+<%= partial "/includes/permission/getData.md.erb" %>
+
+## Update My Account
+
+<%= partial "/includes/accounts/updateData.md.erb" %>
+
+This endpoint updates a my account.
+### HTTP Request
+<span class="method-patch">PATCH</span> `/v1/accounts/:accountId`
+
+<%= partial "/includes/accounts/requestParameters.md.erb"%>
+
+<%= partial "/includes/permission/updateData.md.erb" %>
+
+<aside class="notice">If you are not admin, but trying to store <code>userId</code> inside request body, the server will ignore it.</aside>
+
+## Update a Specific Account
+
+<%= partial "/includes/accounts/updateData.md.erb" %>
+
+This endpoint updates a specific account.
+### HTTP Request
+<span class="method-patch">PATCH</span> `/v1/accounts/:accountId`
+
+<%= partial "/includes/accounts/requestParameters.md.erb"%>
+
+<%= partial "/includes/permission/updateData.md.erb" %>
+
+<aside class="notice">If you are not admin, but trying to store <code>userId</code> inside request body, the server will ignore it.</aside>
+
+## Delete a Specific Account
+
+<%= partial "/includes/common/deleteResponse.md.erb"%>
+
+This endpoint deletes a specific account.
+### HTTP Request
+<span class="method-delete">DELETE</span>`/v1/accounts/:accountId`
+
+<%= partial "/includes/permission/deleteData.md.erb" %>
+
+## Get Contacts from a Specific Account
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": [
+    {
+      "id": 4,
+      "name": "11 firstName",
+      "email": "44 email",
+      "phone": "55 phone",
+      "mobile": "66 mobile",
+      "fax": "77 fax",
+      "image": "88 image",
+      "title": "99 title",
+      "address": "address",
+      "createdAt": "2019-08-18T15:10:00.000Z",
+      "updatedAt": "2019-08-18T15:10:00.000Z",
+      "companyId": 2,
+      "userId": 6,
+      "accountId": 6
+    },
+    {
+      "id": 5,
+      "name": "11 firstName",
+      "email": "44 email",
+      "phone": "55 phone",
+      "mobile": "66 mobile",
+      "fax": "77 fax",
+      "image": "88 image",
+      "title": "99 title",
+      "address": "address",
+      "createdAt": "2019-08-18T15:10:17.000Z",
+      "updatedAt": "2019-08-18T15:10:17.000Z",
+      "companyId": 2,
+      "userId": 6,
+      "accountId": 6
+    }
+  ]
+}
+```
+
+This endpoint retrieves contacts from a specific account.
+
+### HTTP Request
+<span class="method-get">GET</span>`/v1/accounts/:accountId/contacts`
+
+<%= partial "/includes/permission/getData.md.erb" %>
+
+## Get Projects from a Specific Account
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": [
+    {
+      "id": 2,
+      "name": "1",
+      "winRate": "3 winRate",
+      "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
+      "competitor": "廣達，鴻海",
+      "totalPrice": 0,
+      "cost": 0,
+      "margin": 0,
+      "closdeDate": "1559927161",
+      "createdAt": "2019-08-18T17:09:56.000Z",
+      "updatedAt": "2019-08-18T17:09:56.000Z",
+      "companyId": 2,
+      "userId": 6,
+      "accountId": 6,
+      "contactId": 5,
+      "account": {
+        "id": 6,
+        "name": "2englishName",
+        "image": "image"
+      },
+      "contact": {
+        "id": 5,
+        "name": "11 firstName",
+        "image": "88 image"
+      }
+    },
+    {
+      "id": 3,
+      "name": "1",
+      "winRate": "3 winRate",
+      "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
+      "competitor": "廣達，鴻海",
+      "totalPrice": 0,
+      "cost": 0,
+      "margin": 0,
+      "closdeDate": "1559927161",
+      "createdAt": "2019-08-19T03:18:19.000Z",
+      "updatedAt": "2019-08-19T03:18:19.000Z",
+      "companyId": null,
+      "userId": 6,
+      "accountId": 6,
+      "contactId": 5,
+      "account": {
+        "id": 6,
+        "name": "2englishName",
+        "image": "image"
+      },
+      "contact": {
+        "id": 5,
+        "name": "11 firstName",
+        "image": "88 image"
+      }
+    }
+  ]
+}
+```
+
+This endpoint retrieves projects from a specific account.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/accounts/:accountId/projects`
+
+<%= partial "/includes/permission/getData.md.erb" %>
+
+## Get Quotations from a Specific Account
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": [
+    {
+      "id": 1,
+      "name": "Project P1",
+      "expriretionDate": "data.expriretionDate",
+      "totalPrice": 0,
+      "cost": 0,
+      "margin": 0,
+      "currency": "USD",
+      "paymentTerm": "TT Advance",
+      "number": "IP-85008122",
+      "createdAt": "2019-08-25T10:23:22.000Z",
+      "updatedAt": "2019-08-25T10:23:22.000Z",
+      "companyId": 2,
+      "userId": 3,
+      "accountId": 9,
+      "contactId": 1,
+      "projectId": 1,
+      "account": {
+        "id": 9,
+        "name": "2englishName",
+        "image": "image"
+      },
+      "contact": {
+        "id": 1,
+        "name": "11 firstName",
+        "image": "88 image"
+      },
+      "project": {
+        "id": 1,
+        "name": "1"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Project P2",
+      "expriretionDate": "data.expriretionDate",
+      "totalPrice": 20000,
+      "cost": 24000,
+      "margin": -0.2,
+      "currency": "USD",
+      "paymentTerm": "TT Advance",
+      "number": "IP-85008122",
+      "createdAt": "2019-08-30T17:59:12.000Z",
+      "updatedAt": "2019-08-31T04:44:52.000Z",
+      "companyId": 2,
+      "userId": 3,
+      "accountId": 9,
+      "contactId": 1,
+      "projectId": 1,
+      "account": {
+        "id": 9,
+        "name": "2englishName",
+        "image": "image"
+      },
+      "contact": {
+        "id": 1,
+        "name": "11 firstName",
+        "image": "88 image"
+      },
+      "project": {
+        "id": 1,
+        "name": "1"
+      }
+    }
+  ]
+}
+```
+
+This endpoint retrieves quotations from a specific account.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/accounts/:accountId/quotations`
+
+<%= partial "/includes/permission/getData.md.erb" %>

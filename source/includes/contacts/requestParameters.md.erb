@@ -1,0 +1,14 @@
+### Request Body Parameters
+Parameter | Required | Format | Validation
+--------- | ----------- | ----------- | -----------
+name | TRUE | String |isString
+email | OPTIONAL | String | isString
+phone | OPTIONAL | String | isString
+mobile | OPTIONAL | String | isString
+fax | OPTIONAL | String | isString
+image | OPTIONAL | String | isString
+title | OPTIONAL | String | isString
+address | OPTIONAL | String | isString
+accountId | TRUE | Int | isInt
+userId | TRUE | Int | isInt (Admin Only, but should same as `accountId`'s `userId`)
+

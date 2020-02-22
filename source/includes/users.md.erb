@@ -1,0 +1,576 @@
+# Users
+
+## Get Me
+
+<%= partial "/includes/users/getOne.md.erb"%>
+
+This endpoint retrieves user's profile.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/users/me`
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Full permission.
+Admin | Full permission
+User  | Full permission
+
+## Get All Users
+
+<%= partial "/includes/users/getData.md.erb"%>
+
+This endpoint retrieves all users.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/users`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+TBD | false | TBD.
+TBD | true | TBD.
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can retrieve users which <code>companyId</code> same as admin's.
+User  | Full permission, can retrieve users with <code>companyId</code> same user's.
+
+## Create a User
+
+> Example Request Body
+
+```json
+{
+  "data": {
+    "name": "Kong",
+    "email": "4ab@gm.co",
+    "phone": "55 phone",
+    "mobile": "+886952318999",
+    "fax": "+886952318999",
+    "image": "K",
+    "title": "CTO",
+    "address": "address",
+    "password": "1234567890"
+  }
+}
+```
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 201,
+    "message": "Created"
+  },
+  "data": {
+    "id": 3,
+    "name": "Kong",
+    "email": "44 email",
+    "phone": "55 phone",
+    "mobile": "+886952318999",
+    "fax": "+886952318999",
+    "image": "K",
+    "title": "CTO",
+    "address": "address",
+    "createdAt": "1559927161",
+    "updatedAt": "1559927161",
+    "password": "$2a$12$7uHqDmqEw9gAcdr9GZwzfeQcqCAzzx1mbwGQ/uJtrFkMyyDwWjb4m",
+    "role": "user",
+    "hierarchyLevel": 2,
+    "parentId": 1,
+    "companyId": 2
+  }
+}
+```
+
+This endpoint creates a user.
+### HTTP Request
+<span class="method-post">POST</span> `/v1/users`
+
+<%= partial "/includes/users/requestParameters.md.erb"%>
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Creates user with admin's <code>companyId</code>.
+User  | Forbidden.
+
+## Get a Specific User
+
+<%= partial "/includes/users/getOne.md.erb"%>
+
+This endpoint retrieves a specific user.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/users/:userId`
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can retrieve user which <code>companyId</code> same as admin's.
+User  | Full permission, can retrieve user which <code>companyId</code> same as user's.
+
+## Update a Specific User
+
+<%= partial "/includes/users/updateData.md.erb"%>
+
+This endpoint updates a specific user.
+### HTTP Request
+<span class="method-patch">PATCH</span>`/v1/users/:userId`
+
+<%= partial "/includes/users/requestParameters.md.erb"%>
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can update users which <code>companyId</code> same as admin's .
+User  | Forbidden.
+
+## Update Me
+
+<%= partial "/includes/users/updateData.md.erb"%>
+
+This endpoint updates my user information.
+### HTTP Request
+<span class="method-patch">PATCH</span>`/v1/users/me`
+
+<%= partial "/includes/users/requestParameters.md.erb"%>
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can update users which <code>companyId</code> same as admin's .
+User  | Forbidden.
+
+## Delete a Specific User
+
+<%= partial "/includes/common/deleteResponse.md.erb"%>
+
+This endpoint deletes a specific user.
+### HTTP Request
+<span class="method-delete">DELETE</span>`/v1/users/me`
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can delete user which <code>companyId</code> same as admin's.
+User  | Forbidden.
+
+<aside class="warning">
+You cannot delete admin.
+</aside>
+
+## Get Accounts from a Specific User
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "name": "2englishName",
+        "email": "info@sasha.com",
+        "address": "3 address",
+        "invoiceAddress": "4 .Invoice Address",
+        "deliveryAddress": "5 .Delivery Address",
+        "tel": "6 phone",
+        "vatNumber": "7 vatNumber",
+        "webSite": "https://www.apple.com",
+        "image": "image",
+        "discount": 0.2,
+        "createdAt": "2019-08-17T16:19:30.000Z",
+        "updatedAt": "2019-08-17T16:47:44.000Z",
+        "companyId": 2,
+        "userId": 3
+      },
+      {
+        "id": 8,
+        "name": "2englishName",
+        "email": "info@sasha.com",
+        "address": "3 address",
+        "invoiceAddress": "4 .Invoice Address",
+        "deliveryAddress": "5 .Delivery Address",
+        "tel": "6 phone",
+        "vatNumber": "7 vatNumber",
+        "webSite": "https://www.apple.com",
+        "image": "image",
+        "discount": 0.2,
+        "createdAt": "2019-08-17T16:58:31.000Z",
+        "updatedAt": "2019-08-17T16:58:31.000Z",
+        "companyId": 2,
+        "userId": 3
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves accounts from a specific user.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/user/:userId/accounts`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+TBD | false | TBD.
+TBD | true | TBD.
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can rerieve acounts which <code>companyId</code> same as admin's.
+User  | Forbidden.
+
+## Get Contacts from a Specific User
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "name": "11 firstName",
+        "email": "44 email",
+        "phone": "55 phone",
+        "mobile": "66 mobile",
+        "fax": "77 fax",
+        "image": "88 image",
+        "title": "99 title",
+        "address": "address",
+        "createdAt": "2019-08-18T04:38:01.000Z",
+        "updatedAt": "2019-08-18T04:38:01.000Z",
+        "companyId": 2,
+        "userId": 3,
+        "accountId": 9,
+        "account": {
+          "id": 9,
+          "name": "2englishName",
+          "image": "image"
+        }
+      },
+      {
+        "id": 2,
+        "name": "11",
+        "email": "44",
+        "phone": "55",
+        "mobile": "66",
+        "fax": "77",
+        "image": "88",
+        "title": "99",
+        "address": "address",
+        "createdAt": "2019-08-18T04:40:32.000Z",
+        "updatedAt": "2019-08-18T07:29:21.000Z",
+        "companyId": 2,
+        "userId": 3,
+        "accountId": 9,
+        "account": {
+          "id": 9,
+          "name": "2englishName",
+          "image": "image"
+        }
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves all contacts from a specific user.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/users/:userId/contacts`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+TBD | false | TBD.
+TBD | true | TBD.
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can rerieve contacts which <code>companyId</code> same as admin's.
+User  | Forbidden.
+
+## Get Projects from a Specific User
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": [
+      {
+        "id": 2,
+        "name": "1",
+        "winRate": "3 winRate",
+        "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
+        "competitor": "廣達，鴻海",
+        "totalPrice": 0,
+        "cost": 0,
+        "margin": 0,
+        "closdeDate": "1559927161",
+        "createdAt": "2019-08-18T17:09:56.000Z",
+        "updatedAt": "2019-08-18T17:09:56.000Z",
+        "companyId": 2,
+        "userId": 6,
+        "accountId": 6,
+        "contactId": 5,
+        "account": {
+          "id": 6,
+          "name": "2englishName",
+          "image": "image"
+        },
+        "contact": {
+          "id": 5,
+          "name": "11 firstName",
+          "image": "88 image"
+        }
+      },
+      {
+        "id": 3,
+        "name": "1",
+        "winRate": "3 winRate",
+        "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
+        "competitor": "廣達，鴻海",
+        "totalPrice": 0,
+        "cost": 0,
+        "margin": 0,
+        "closdeDate": "1559927161",
+        "createdAt": "2019-08-19T03:18:19.000Z",
+        "updatedAt": "2019-08-19T03:18:19.000Z",
+        "companyId": null,
+        "userId": 6,
+        "accountId": 6,
+        "contactId": 5,
+        "account": {
+          "id": 6,
+          "name": "2englishName",
+          "image": "image"
+        },
+        "contact": {
+          "id": 5,
+          "name": "11 firstName",
+          "image": "88 image"
+        }
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves projects from a specific user.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/users/:userId/projects`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+TBD | false | TBD.
+TBD | true | TBD.
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can rerieve projects which <code>companyId</code> same as admin's.
+User  | Forbidden.
+
+## Get Quotations from a Specific User
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "name": "Project P1",
+        "expriretionDate": "data.expriretionDate",
+        "totalPrice": 0,
+        "cost": 0,
+        "margin": 0,
+        "currency": "USD",
+        "paymentTerm": "TT Advance",
+        "number": "IP-85008122",
+        "createdAt": "2019-08-25T10:23:22.000Z",
+        "updatedAt": "2019-08-25T10:23:22.000Z",
+        "companyId": 2,
+        "userId": 3,
+        "accountId": 9,
+        "contactId": 1,
+        "projectId": 1,
+        "account": {
+          "id": 9,
+          "name": "2englishName",
+          "image": "image"
+        },
+        "contact": {
+          "id": 1,
+          "name": "11 firstName",
+          "image": "88 image"
+        },
+        "project": {
+          "id": 1,
+          "name": "1"
+        }
+      },
+      {
+        "id": 2,
+        "name": "Project P2",
+        "expriretionDate": "data.expriretionDate",
+        "totalPrice": 20000,
+        "cost": 24000,
+        "margin": -0.2,
+        "currency": "USD",
+        "paymentTerm": "TT Advance",
+        "number": "IP-85008122",
+        "createdAt": "2019-08-30T17:59:12.000Z",
+        "updatedAt": "2019-08-31T04:44:52.000Z",
+        "companyId": 2,
+        "userId": 3,
+        "accountId": 9,
+        "contactId": 1,
+        "projectId": 1,
+        "account": {
+          "id": 9,
+          "name": "2englishName",
+          "image": "image"
+        },
+        "contact": {
+          "id": 1,
+          "name": "11 firstName",
+          "image": "88 image"
+        },
+        "project": {
+          "id": 1,
+          "name": "1"
+        }
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves quotations from a specific user.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/users/:userId/quotations`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+TBD | false | TBD.
+TBD | true | TBD.
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can rerieve quotations which <code>companyId</code> same as admin's.
+User  | Forbidden.
+
+## Get Products from a Specific User
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": [
+      {
+        "id": 4,
+        "model": "model 3",
+        "description": "2 description",
+        "cost": 200,
+        "standardPrice": 300,
+        "margin": 1.5,
+        "image": "6 image",
+        "standard": true,
+        "createdAt": "2019-08-20T06:15:00.000Z",
+        "updatedAt": "2019-08-20T06:15:00.000Z",
+        "companyId": 2,
+        "userId": 3
+      },
+      {
+        "id": 5,
+        "model": "model 6",
+        "description": "2 description",
+        "cost": 200,
+        "standardPrice": 300,
+        "margin": 1.5,
+        "image": "6 image",
+        "standard": true,
+        "createdAt": "2019-08-20T06:15:00.000Z",
+        "updatedAt": "2019-08-20T06:15:00.000Z",
+        "companyId": 2,
+        "userId": 3
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves products from a specific user.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/users/:userId/products`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+TBD | false | TBD.
+TBD | true | TBD.
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can rerieve quotations which <code>companyId</code> same as admin's.
+User  | Forbidden.
+
+
+## Get Members of Specific Users
+
+<%= partial "/includes/users/getData.md.erb"%>
+
+This endpoint retrieves members from a specific user.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/users/:userId/members`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+TBD | false | TBD.
+TBD | true | TBD.
+
+<%= partial "/includes/permission/getData.md.erb"%>

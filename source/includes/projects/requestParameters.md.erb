@@ -1,0 +1,11 @@
+### Request Body Parameters
+Parameter | Required | Format |  Validation
+--------- | ----------- | ----------- | -----------
+name | TRUE | String | isString
+winRate | TRUE | Float | isFloat
+stage | TRUE | String | isString
+competitor | OPTIONAL | String | isString
+contactId | TRUE | Int | isInt
+accountId | TRUE | Int | isInt
+companyId | TRUE | Int | isInt
+userId | TRUE | Int | isInt (Admin only, but should same as `accountId`'s `userId`)

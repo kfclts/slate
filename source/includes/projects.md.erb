@@ -1,0 +1,280 @@
+# Projects
+
+## Get All Projects
+
+<%= partial "/includes/projects/getData.md.erb" %>
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+TBD | false | TBD.
+TBD | true | TBD.
+
+This endpoint retrieves all projects.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/projects`
+
+<%= partial "/includes/permission/getData.md.erb" %>
+
+## Create a Project
+
+> Example Request Body
+
+```json
+{
+  "data": {
+    "name": "1 localName",
+    "winRate": "3 winRate",
+    "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
+    "competitor": "廣達，鴻海",
+    "contactId": 2,
+    "closdeDate": "1559927161"
+  }
+}
+```
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 201,
+    "message": "Created"
+  },
+  "data": {
+    "id": 1,
+    "name": "1 localName",
+    "winRate": "3 winRate",
+    "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
+    "competitor": "廣達，鴻海",
+    "contactId": 2,
+    "accountId": 2,
+    "userId": 2,
+    "closdeDate": "1559927161"
+    "updatedAt": "1559927161",
+    "createdAt": "1559927161"
+  }
+}
+```
+
+This endpoint creates a projects.
+### HTTP Request
+<span class="method-post">POST</span> `/v1/projects`
+
+<%= partial "/includes/projects/requestParameters.md.erb" %>
+
+<%= partial "/includes/permission/createData.md.erb" %>
+
+<aside class="notice">If you are not admin, but trying to store <code>userId</code> inside request body, the server will ignore it.</aside>
+
+<aside class="notice">In Response Body <code>accountId</code> same as <code>contact.accountId</code> </aside>
+<aside class="notice">In Response Body <code>userId</code> same as <code>contact.userId</code> </aside>
+
+
+## Get a Specific Project
+
+<%= partial "/includes/projects/getOne.md.erb" %>
+
+This endpoint retrieves a specific project.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/projects/:projectId`
+
+<%= partial "/includes/permission/getData.md.erb" %>
+
+## Update a Specific Project
+
+<%= partial "/includes/projects/updateData.md.erb" %>
+
+This endpoint updates a specific project.
+### HTTP Request
+<span class="method-patch">PATCH</span>`/v1/projects/:projectId`
+
+<%= partial "/includes/projects/getData.md.erb" %>
+
+<%= partial "/includes/permission/updateData.md.erb" %>
+
+<aside class="notice">If you are not admin, but trying to store <code>userId</code> inside request body, the server will ignore it.</aside>
+
+## Delete a Specific Project
+
+<%= partial "/includes/common/deleteResponse.md.erb" %>
+
+This endpoint deletes a specific project.
+### HTTP Request
+<span class="method-delete">DELETE</span>`/v1/projects/:projectId`
+
+<%= partial "/includes/permission/deleteData.md.erb" %>
+
+## Get Quotations from a Specific Project
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": {
+      "quotations": [
+        {
+          "id": 1,
+          "name": "Project P1",
+          "expriretionDate": "data.expriretionDate",
+          "totalPrice": 0,
+          "cost": 0,
+          "margin": 0,
+          "currency": "USD",
+          "paymentTerm": "TT Advance",
+          "number": "IP-85008122",
+          "createdAt": "2019-08-25T10:23:22.000Z",
+          "updatedAt": "2019-08-25T10:23:22.000Z",
+          "companyId": 2,
+          "userId": 3,
+          "accountId": 9,
+          "contactId": 1,
+          "projectId": 1,
+          "account": {
+            "id": 9,
+            "name": "2englishName",
+            "image": "image"
+          },
+          "contact": {
+            "id": 1,
+            "name": "11 firstName",
+            "image": "88 image"
+          }
+        },
+        {
+          "id": 2,
+          "name": "Project P2",
+          "expriretionDate": "data.expriretionDate",
+          "totalPrice": 20000,
+          "cost": 24000,
+          "margin": -0.2,
+          "currency": "USD",
+          "paymentTerm": "TT Advance",
+          "number": "IP-85008122",
+          "createdAt": "2019-08-30T17:59:12.000Z",
+          "updatedAt": "2019-08-31T04:44:52.000Z",
+          "companyId": 2,
+          "userId": 3,
+          "accountId": 9,
+          "contactId": 1,
+          "projectId": 1,
+          "account": {
+            "id": 9,
+            "name": "2englishName",
+            "image": "image"
+          },
+          "contact": {
+            "id": 1,
+            "name": "11 firstName",
+            "image": "88 image"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+This endpoint retrieves quotations from a specific project.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/projects/:projectId/quotations`
+
+<%= partial "/includes/permission/getData.md.erb" %>
+
+
+## Create Updates from a Specific Project
+
+> Example Request Body
+
+```json
+{
+  "data": {
+    "description": "3 Updates"
+  }
+}
+```
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 201,
+    "message": "Created"
+  },
+  "data": {
+    "id": 5,
+    "description": "3 Updates",
+    "projectId": 1,
+    "userId": 2,
+    "updatedAt": "2019-08-19T07:42:32.494Z",
+    "createdAt": "2019-08-19T07:42:32.494Z"
+  }
+}
+```
+
+This endpoint creates a update for a specific projects.
+### HTTP Request
+<span class="method-post">POST</span> `/v1/projects/:projectId/updates`
+
+<%= partial "/includes/updates/requestParameters.md.erb" %>
+
+<%= partial "/includes/permission/createData.md.erb" %>
+
+<aside class="notice">If you are not admin, but trying to store <code>userId</code> inside request body, the server will ignore it.</aside>
+<aside class="notice">If you have permission to read this project, In Response Body <code>userId</code> is your <code>req.userId</code> </aside>
+
+
+
+
+## Get Updates from a Specific Project
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "description": "First Updates",
+        "createdAt": "2019-08-19T07:11:41.000Z",
+        "updatedAt": "2019-08-19T07:11:41.000Z",
+        "user": {
+          "id": 2,
+          "name": "Kong",
+          "title": "CTO",
+          "image": "K"
+        }
+      },
+      {
+        "id": 2,
+        "description": "First Updates",
+        "createdAt": "2019-08-19T07:12:48.000Z",
+        "updatedAt": "2019-08-19T07:12:48.000Z",
+        "user": {
+          "id": 2,
+          "name": "Kong",
+          "title": "CTO",
+          "image": "K"
+        }
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves updates from a specific project.
+### HTTP Request
+<span class="method-get">GET</span>`/v1/projects/:projectId/updates`
+
+<%= partial "/includes/permission/getData.md.erb" %>

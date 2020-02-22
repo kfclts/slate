@@ -1,0 +1,128 @@
+# Products
+
+## Get All Products
+
+<%= partial "/includes/products/getData.md.erb"%>
+
+This endpoint retrieves all products.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/products`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+TBD | false | TBD.
+TBD | true | TBD.
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can rerieve products which <code>companyId</code> same as admin's.
+User  | Retrieves products which <code>userId</code> same as user's and descendants of the user, or the products which <code>companyId</code> same as user's. and the <code>standard</code> flag is <code>true</code>.
+
+## Create a Product
+
+> Example Request Body
+
+```json
+{
+  "data": {
+    "model": "11 model",
+    "description": "22 description",
+    "cost": 100,
+    "standardPrice": 200,
+    "margin": 1.2,
+    "image": "66 image",
+    "standard": true,
+    "userId": 2
+  }
+}
+```
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 201,
+    "message": "Created"
+  },
+  "data": {
+    "id": 1,
+    "model": "11 model",
+    "description": "22 description",
+    "cost": 100,
+    "standardPrice": 200,
+    "margin": 1.2,
+    "image": "66 image",
+    "standard": true,
+    "userId": 2
+    "companyId": 1,
+    "createdAt": "1559927161",
+    "updatedAt": "1559927161"
+  }
+}
+```
+
+This endpoint creates a product.
+### HTTP Request
+<span class="method-post">POST</span> `/v1/products/`
+
+<%= partial "/includes/products/requestParameters.md.erb"%>
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can create product with admin's <code>companyId</code>.
+User  | Full permission, can create product with user's <code>companyId</code> and <code>userId</code>. but cannot set <code>standard</code> flag to <code>TRUE</code>
+
+<aside class="notice">If you create a product and set <code>standard</code> to <code>false</code> in request body, only you and your ancestors can view the product</aside>
+
+## Get a Specific Product
+
+<%= partial "/includes/products/getOne.md.erb"%>
+
+This endpoint retrieves a specific product.
+### HTTP Request
+<span class="method-get">GET</span> `/v1/products/:productId`
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can rerieve product which <code>companyId</code> same as admin's.
+User  | Retrieves product which <code>userId</code> same as user's and descendants of the user, or the products which <code>companyId</code> same as user's, <code>userId</code> same as user's.
+
+## Update a Specific Product
+
+<%= partial "/includes/products/updateData.md.erb"%>
+
+<%= partial "/includes/products/requestParameters.md.erb"%>
+
+This endpoint updates a specific product.
+### HTTP Request
+<span class="method-patch">PATCH</span>`/v1/products/:productId`
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can update product which <code>companyId</code> same as admin's.
+User  | Updates product which <code>userId</code> same as user's and descendants of the user, or the products which <code>companyId</code> same as user's, <code>userId</code> same as user's.
+
+## Delete a Specific Product
+
+<%= partial "/includes/common/deleteResponse.md.erb"%>
+
+This endpoint deletes a specific product.
+### HTTP Request
+<span class="method-delete">DELETE</span>`/v1/products/:productId`
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission, can delete product which <code>companyId</code> same as admin's.
+User  | Forbidden.

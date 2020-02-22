@@ -1,0 +1,13 @@
+### Request Body Parameters
+Parameter | Required |  Format | Validation
+--------- | ----------- | ----------- | -----------
+name | TRUE | String | isString
+expriretionDate | TRUE | String | isString
+totalPrice | TRUE | Float | isFloat
+totalMargin | TRUE | Float | isFloat
+currency | TRUE | String |isString
+paymentTerm | TRUE | String | isString
+number | TRUE | String | isString
+projectId | TRUE | Int | isInt
+contactId | TRUE | Int | isInt (`contact`'s `accountId` sould same as `project`'s `accountId`)
+userId | OPTIONAL | Int | isInt (Admin Only)
