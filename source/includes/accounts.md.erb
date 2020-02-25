@@ -306,3 +306,70 @@ This endpoint retrieves quotations from a specific account.
 <span class="method-get">GET</span>`/v1/accounts/:accountId/quotations`
 
 <%= partial "/includes/permission/getData.md.erb" %>
+
+
+## Get Products from a Specific Account
+
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": [
+    {
+      "id": "e48f5ae9-e877-4bd7-a61e-d1d3462228f1",
+      "model": "modelA3",
+      "description": "22 description",
+      "cost": 50,
+      "standardPrice": 200,
+      "margin": 1.2,
+      "image": "66 image",
+      "standard": true,
+      "createdAt": "2020-02-22T05:18:49.000Z",
+      "updatedAt": "2020-02-22T05:18:49.000Z",
+      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+      "LowestPrices": [
+        {
+          "id": "a2da929c-3fc5-4947-846f-a104f9fea391",
+          "price": 200,
+          "priceMargin": 0.5
+        }
+      ],
+      "PreviousPrices": [
+        {
+          "id": "1eae5c10-3135-496b-babf-10d8a6fffaca",
+          "price": 300,
+          "priceMargin": 0.833333
+        }
+      ]
+    },
+    {
+      "id": "f9e49cbf-76e7-4f3f-b9de-fa832dfaa71c",
+      "model": "modelA5",
+      "description": "22 description",
+      "cost": 100,
+      "standardPrice": 200,
+      "margin": 1.2,
+      "image": "66 image",
+      "standard": true,
+      "createdAt": "2020-02-22T05:19:31.000Z",
+      "updatedAt": "2020-02-22T05:19:31.000Z",
+      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+      "LowestPrices": [],
+      "PreviousPrices": []
+    }
+  ]
+}
+
+```
+
+This endpoint retrieves products from a specific account. In which include lowest price and previous price
+### HTTP Request
+<span class="method-get">GET</span>`/v1/accounts/:accountId/products`
+
+<%= partial "/includes/permission/getData.md.erb" %>
