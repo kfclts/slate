@@ -2,7 +2,52 @@
 
 ## Get Me
 
-<%= partial "/includes/users/getOne.md.erb"%>
+> Example Response Body
+
+```json
+{
+  "status": {
+    "status": 200,
+    "message": "OK"
+  },
+  "data": {
+    "id": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
+    "name": "userA3",
+    "email": "userA3@companyA.co",
+    "phone": "55 phone",
+    "mobile": "+886952318999",
+    "fax": "+886952318999",
+    "image": "K",
+    "title": "CTO",
+    "address": "address",
+    "password": "$2a$12$fBYVoV56RFKZupOcZTH3IO1AkoXlIgxUBCup8sIS3enIxD4yQqYse",
+    "role": "user",
+    "createdAt": "2020-02-18T15:44:39.000Z",
+    "updatedAt": "2020-02-18T15:44:39.000Z",
+    "hierarchyLevel": 4,
+    "parentId": "7aea9583-1cc9-480f-87cf-026a2cc0ccf8",
+    "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+    "Company": {
+      "id": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
+      "name": "companyA",
+      "email": "info@companyA.com",
+      "address": "Taipei",
+      "invoiceAddress": "Zhongzheng District",
+      "deliveryAddress": "Zhongxiao East Road",
+      "tel": "+886-2-3393-3393",
+      "vatNumber": "12345678",
+      "webSite": "https://www.heysasha.com",
+      "image": "https://m.media-amazon.com/images/M/MV5BNTI4MjBkNjgtN2ZhYi00YThhLTgxZDMtMjc4MjY4OTRhY2QxXkEyXkFqcGdeQXVyNDY5NTkzMTA@._V1_SY1000_SX1500_AL_.jpg",
+      "taxRate": 0.05,
+      "profit": 0.3,
+      "owner": "PNK",
+      "fax": null,
+      "createdAt": "2020-02-11T12:13:29.000Z",
+      "updatedAt": "2020-02-11T12:21:03.000Z"
+    }
+  }
+}
+```
 
 This endpoint retrieves user's profile.
 ### HTTP Request
@@ -174,34 +219,7 @@ You cannot delete admin.
 
 ## Get Accounts from a Specific User
 
-> Example Response Body
-
-```json
-{
-  "status": {
-    "status": 200,
-    "message": "OK"
-  },
-  "data": [
-    {
-      "id": "70a74efb-9e61-4e18-8a44-5f2651433e4f",
-      "name": "accountA2",
-      "email": "info@accountA2.com",
-      "address": "3 address",
-      "invoiceAddress": "4 .Invoice Address",
-      "deliveryAddress": "5 .Delivery Address",
-      "tel": "6 phone",
-      "vatNumber": "7 vatNumber",
-      "webSite": "https://www.apple.com",
-      "image": "image",
-      "discount": 0.2,
-      "createdAt": "2020-02-19T08:13:41.000Z",
-      "updatedAt": "2020-02-19T08:13:41.000Z",
-      "UserId": "7aea9583-1cc9-480f-87cf-026a2cc0ccf8",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6"
-    }
-  ]
-}
+<%= partial "/includes/accounts/getData.md.erb"%>
 ```
 
 This endpoint retrieves accounts from a specific user.
@@ -223,39 +241,7 @@ User  | Forbidden.
 
 ## Get Contacts from a Specific User
 
-> Example Response Body
-
-```json
-{
-  "status": {
-    "status": 200,
-    "message": "OK"
-  },
-  "data": [
-    {
-      "id": "37e6b4aa-a2a3-4dd5-ba61-0b3a67d32f09",
-      "name": "contacA2",
-      "email": "contacA2@accountA2.com",
-      "phone": "55 phone",
-      "mobile": "66 mobile",
-      "fax": "77 fax",
-      "image": "88 image",
-      "title": "99 title",
-      "address": "address",
-      "createdAt": "2020-02-19T12:48:55.000Z",
-      "updatedAt": "2020-02-19T12:48:55.000Z",
-      "AccountId": "70a74efb-9e61-4e18-8a44-5f2651433e4f",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "UserId": "7aea9583-1cc9-480f-87cf-026a2cc0ccf8",
-      "Account": {
-        "id": "70a74efb-9e61-4e18-8a44-5f2651433e4f",
-        "name": "accountA2",
-        "image": "image"
-      }
-    }
-  ]
-}
-```
+<%= partial "/includes/contacts/getData.md.erb"%>
 
 This endpoint retrieves all contacts from a specific user.
 ### HTTP Request
@@ -276,45 +262,7 @@ User  | Forbidden.
 
 ## Get Projects from a Specific User
 
-> Example Response Body
-
-```json
-{
-  "status": {
-    "status": 200,
-    "message": "OK"
-  },
-  "data": [
-    {
-      "id": "81c9b319-8e04-4078-873f-4e699c13f93e",
-      "name": "projectA2",
-      "winRate": "3 winRate",
-      "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
-      "competitor": "廣達，鴻海",
-      "totalPrice": 0,
-      "cost": 0,
-      "margin": 0,
-      "closdeDate": "1559927161",
-      "createdAt": "2020-02-19T13:43:31.000Z",
-      "updatedAt": "2020-02-19T13:43:31.000Z",
-      "AccountId": "70a74efb-9e61-4e18-8a44-5f2651433e4f",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "ContactId": "37e6b4aa-a2a3-4dd5-ba61-0b3a67d32f09",
-      "UserId": "7aea9583-1cc9-480f-87cf-026a2cc0ccf8",
-      "Account": {
-        "id": "70a74efb-9e61-4e18-8a44-5f2651433e4f",
-        "name": "accountA2",
-        "image": "image"
-      },
-      "Contact": {
-        "id": "37e6b4aa-a2a3-4dd5-ba61-0b3a67d32f09",
-        "name": "contacA2",
-        "image": "88 image"
-      }
-    }
-  ]
-}
-```
+<%= partial "/includes/projects/getData.md.erb"%>
 
 This endpoint retrieves projects from a specific user.
 ### HTTP Request
@@ -335,82 +283,7 @@ User  | Forbidden.
 
 ## Get Quotations from a Specific User
 
-> Example Response Body
-
-```json
-{
-  "status": {
-    "status": 200,
-    "message": "OK"
-  },
-  "data": [
-    {
-      "id": "09cae17d-298c-443d-b966-268b30f77d71",
-      "name": "QuotationA3",
-      "expriretionDate": "data.expriretionDate",
-      "totalPrice": 1900,
-      "cost": 350,
-      "margin": 0.815789,
-      "currency": "USD",
-      "paymentTerm": "TT Advance",
-      "number": "IP-85008122",
-      "createdAt": "2020-02-22T06:22:17.000Z",
-      "updatedAt": "2020-02-22T06:22:18.000Z",
-      "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "ContactId": "a98b92de-2e7f-49fa-8874-2882b3954733",
-      "ProjectId": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
-      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-      "Account": {
-        "id": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
-        "name": "accountA3",
-        "image": "image"
-      },
-      "Contact": {
-        "id": "a98b92de-2e7f-49fa-8874-2882b3954733",
-        "name": "contacA3",
-        "image": "88 image"
-      },
-      "Project": {
-        "id": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
-        "name": "projectA3"
-      }
-    },
-    {
-      "id": "22051740-c82b-4616-abd5-f2977165f2f9",
-      "name": "QuotationA3",
-      "expriretionDate": "data.expriretionDate",
-      "totalPrice": 1900,
-      "cost": 350,
-      "margin": 0.815789,
-      "currency": "USD",
-      "paymentTerm": "TT Advance",
-      "number": "IP-85008122",
-      "createdAt": "2020-02-22T07:18:29.000Z",
-      "updatedAt": "2020-02-22T07:18:29.000Z",
-      "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "ContactId": "a98b92de-2e7f-49fa-8874-2882b3954733",
-      "ProjectId": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
-      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-      "Account": {
-        "id": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
-        "name": "accountA3",
-        "image": "image"
-      },
-      "Contact": {
-        "id": "a98b92de-2e7f-49fa-8874-2882b3954733",
-        "name": "contacA3",
-        "image": "88 image"
-      },
-      "Project": {
-        "id": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
-        "name": "projectA3"
-      }
-    }
-  ]
-}
-```
+<%= partial "/includes/quotations/getData.md.erb"%>
 
 This endpoint retrieves quotations from a specific user.
 ### HTTP Request
@@ -431,46 +304,7 @@ User  | Forbidden.
 
 ## Get Products from a Specific User
 
-> Example Response Body
-
-```json
-{
-  "status": {
-    "status": 200,
-    "message": "OK"
-  },
-  "data": [
-    {
-      "id": "0f351ea4-2928-4a7e-b5ee-7ab38bb2b738",
-      "model": "modelA2",
-      "description": "22 description",
-      "cost": 100,
-      "standardPrice": 200,
-      "margin": 1.2,
-      "image": "66 image",
-      "standard": true,
-      "createdAt": "2020-02-22T05:18:38.000Z",
-      "updatedAt": "2020-02-22T05:18:38.000Z",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa"
-    },
-    {
-      "id": "12dc633e-eb59-47ff-b698-6044f97189c0",
-      "model": "modelA6",
-      "description": "22 description",
-      "cost": 100,
-      "standardPrice": 200,
-      "margin": 1.2,
-      "image": "66 image",
-      "standard": true,
-      "createdAt": "2020-02-22T05:21:03.000Z",
-      "updatedAt": "2020-02-22T05:21:03.000Z",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa"
-    }
-  ]
-}
-```
+<%= partial "/includes/products/getData.md.erb"%>
 
 This endpoint retrieves products from a specific user.
 ### HTTP Request

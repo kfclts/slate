@@ -40,7 +40,8 @@ User  | Forbidden
     "image": "image",
     "taxRate": 0.05,
     "profit": 0.3,
-    "owner": "Jobs"
+    "owner": "Jobs",
+    "fax": "0233938888"
   }
 }
 ```
@@ -67,6 +68,7 @@ User  | Forbidden
     "taxRate": 0.05,
     "profit": 0.3,
     "owner": "Jobs",
+    "fax": "0233938888",
     "updatedAt": "2020-02-22T13:38:49.797Z",
     "createdAt": "2020-02-22T13:38:49.797Z"
   }
@@ -236,62 +238,9 @@ User  | Forbidden.
 -->
 
 ## Get Accounts from a Specific Company `root`
-> Example Response Body
 
-```json
-{
-  "status": {
-    "status": 200,
-    "message": "OK"
-  },
-  "data": [
-    {
-      "id": "0314e863-9168-4040-85c5-d0c965cc256c",
-      "name": "accountA4",
-      "email": "info@accountA4.com",
-      "address": "3 address",
-      "invoiceAddress": "4 .Invoice Address",
-      "deliveryAddress": "5 .Delivery Address",
-      "tel": "6 phone",
-      "vatNumber": "7 vatNumber",
-      "webSite": "https://www.apple.com",
-      "image": "image",
-      "discount": 0.2,
-      "createdAt": "2020-02-19T11:58:01.000Z",
-      "updatedAt": "2020-02-19T11:58:01.000Z",
-      "UserId": "134865eb-fa9c-44b1-86b8-82f3d7bb252b",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "User": {
-        "id": "134865eb-fa9c-44b1-86b8-82f3d7bb252b",
-        "name": "userA4",
-        "image": "K"
-      }
-    },
-    {
-      "id": "39bbaf4e-02c4-4212-8922-bfaf75d9c6a4",
-      "name": "accountA5",
-      "email": "info@accountA5.com",
-      "address": "3 address",
-      "invoiceAddress": "4 .Invoice Address",
-      "deliveryAddress": "5 .Delivery Address",
-      "tel": "6 phone",
-      "vatNumber": "7 vatNumber",
-      "webSite": "https://www.apple.com",
-      "image": "image",
-      "discount": 0.2,
-      "createdAt": "2020-02-19T11:58:32.000Z",
-      "updatedAt": "2020-02-19T11:58:32.000Z",
-      "UserId": "83429f0d-b54e-4fab-8e62-6c6cc383518e",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "User": {
-        "id": "83429f0d-b54e-4fab-8e62-6c6cc383518e",
-        "name": "userA5",
-        "image": "K"
-      }
-    }
-  ]
-}
-```
+<%= partial "/includes/accounts/getData.md.erb"%>
+
 This endpoint retrieves accounts from a specific company.
 ### HTTP Request
 <span class="method-get">GET</span>`/v1/companies/:companyId/accounts`
@@ -314,68 +263,8 @@ User  | Forbidden.
 
 ## Get Contacts from a Specific Company `root`
 
-```json
-{
-  "status": {
-    "status": 200,
-    "message": "OK"
-  },
-  "data": [
-    {
-      "id": "37e6b4aa-a2a3-4dd5-ba61-0b3a67d32f09",
-      "name": "contacA2",
-      "email": "contacA2@accountA2.com",
-      "phone": "55 phone",
-      "mobile": "66 mobile",
-      "fax": "77 fax",
-      "image": "88 image",
-      "title": "99 title",
-      "address": "address",
-      "createdAt": "2020-02-19T12:48:55.000Z",
-      "updatedAt": "2020-02-19T12:48:55.000Z",
-      "AccountId": "70a74efb-9e61-4e18-8a44-5f2651433e4f",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "UserId": "7aea9583-1cc9-480f-87cf-026a2cc0ccf8",
-      "User": {
-        "id": "7aea9583-1cc9-480f-87cf-026a2cc0ccf8",
-        "name": "userA2",
-        "image": "K"
-      },
-      "Account": {
-        "id": "70a74efb-9e61-4e18-8a44-5f2651433e4f",
-        "name": "accountA2",
-        "image": "image"
-      }
-    },
-    {
-      "id": "a98b92de-2e7f-49fa-8874-2882b3954733",
-      "name": "contacA3",
-      "email": "contacA3@accountA3.com",
-      "phone": "55 phone",
-      "mobile": "66 mobile",
-      "fax": "77 fax",
-      "image": "88 image",
-      "title": "99 title",
-      "address": "addressA3",
-      "createdAt": "2020-02-19T13:32:28.000Z",
-      "updatedAt": "2020-02-19T13:36:23.000Z",
-      "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-      "User": {
-        "id": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-        "name": "userA3",
-        "image": "K"
-      },
-      "Account": {
-        "id": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
-        "name": "accountA3",
-        "image": "image"
-      }
-    }
-  ]
-}
-```
+<%= partial "/includes/contacts/getData.md.erb"%>
+
 This endpoint retrieves contacts from a specific company.
 ### HTTP Request
 <span class="method-get">GET</span>`/v1/companies/:companyId/contacts`
@@ -398,80 +287,8 @@ User  | Forbidden.
 
 ## Get Projects from a Specific Company `root`
 
-```json
-{
-  "status": {
-    "status": 200,
-    "message": "OK"
-  },
-  "data": [
-    {
-      "id": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
-      "name": "projectA3",
-      "winRate": "98.5%",
-      "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
-      "competitor": "廣達，鴻海",
-      "totalPrice": 34600,
-      "cost": 5750,
-      "margin": 0.833815,
-      "closdeDate": "1559927161",
-      "createdAt": "2020-02-19T13:44:15.000Z",
-      "updatedAt": "2020-02-22T12:09:37.000Z",
-      "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "ContactId": "a98b92de-2e7f-49fa-8874-2882b3954733",
-      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-      "User": {
-        "id": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-        "name": "userA3",
-        "image": "K"
-      },
-      "Account": {
-        "id": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
-        "name": "accountA3",
-        "image": "image"
-      },
-      "Contact": {
-        "id": "a98b92de-2e7f-49fa-8874-2882b3954733",
-        "name": "contacA3",
-        "image": "88 image"
-      }
-    },
-    {
-      "id": "1e577c0a-2d52-4ff2-882d-5594227d6a42",
-      "name": "projectA6",
-      "winRate": "3 winRate",
-      "stage": "Prospecting, Qualification, Value Propostition, Price Quote, Negotiation, Close Won, Close Lost",
-      "competitor": "廣達，鴻海",
-      "totalPrice": 0,
-      "cost": 0,
-      "margin": 0,
-      "closdeDate": "1559927161",
-      "createdAt": "2020-02-19T13:46:01.000Z",
-      "updatedAt": "2020-02-19T13:46:01.000Z",
-      "AccountId": "d3487318-8a25-4b56-8bc7-87a0f9d07410",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "ContactId": "c78bfe38-b571-4284-9054-11b2d93509bd",
-      "UserId": "91b0eee3-b19b-4425-9c47-0484fb2f9af3",
-      "User": {
-        "id": "91b0eee3-b19b-4425-9c47-0484fb2f9af3",
-        "name": "userA6",
-        "image": "K"
-      },
-      "Account": {
-        "id": "d3487318-8a25-4b56-8bc7-87a0f9d07410",
-        "name": "accountA6",
-        "image": "image"
-      },
-      "Contact": {
-        "id": "c78bfe38-b571-4284-9054-11b2d93509bd",
-        "name": "contacA6",
-        "image": "88 image"
-      }
-    }
-  ]
-}
-```
+<%= partial "/includes/projects/getData.md.erb"%>
+
 This endpoint retrieves projects from a specific company.
 ### HTTP Request
 <span class="method-get">GET</span>`/v1/companies/:companyId/projects`
@@ -494,90 +311,8 @@ User  | Forbidden.
 
 ## Get Quotations from a Specific Company `root`
 
-```json
-{
-  "status": {
-    "status": 200,
-    "message": "OK"
-  },
-  "data": [
-    {
-      "id": "09cae17d-298c-443d-b966-268b30f77d71",
-      "name": "QuotationA3",
-      "expriretionDate": "data.expriretionDate",
-      "totalPrice": 1900,
-      "cost": 350,
-      "margin": 0.815789,
-      "currency": "USD",
-      "paymentTerm": "TT Advance",
-      "number": "IP-85008122",
-      "createdAt": "2020-02-22T06:22:17.000Z",
-      "updatedAt": "2020-02-22T06:22:18.000Z",
-      "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "ContactId": "a98b92de-2e7f-49fa-8874-2882b3954733",
-      "ProjectId": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
-      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-      "User": {
-        "id": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-        "name": "userA3",
-        "image": "K"
-      },
-      "Account": {
-        "id": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
-        "name": "accountA3",
-        "image": "image"
-      },
-      "Contact": {
-        "id": "a98b92de-2e7f-49fa-8874-2882b3954733",
-        "name": "contacA3",
-        "image": "88 image"
-      },
-      "Project": {
-        "id": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
-        "name": "projectA3"
-      }
-    },
-    {
-      "id": "22051740-c82b-4616-abd5-f2977165f2f9",
-      "name": "QuotationA3",
-      "expriretionDate": "data.expriretionDate",
-      "totalPrice": 1900,
-      "cost": 350,
-      "margin": 0.815789,
-      "currency": "USD",
-      "paymentTerm": "TT Advance",
-      "number": "IP-85008122",
-      "createdAt": "2020-02-22T07:18:29.000Z",
-      "updatedAt": "2020-02-22T07:18:29.000Z",
-      "AccountId": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "ContactId": "a98b92de-2e7f-49fa-8874-2882b3954733",
-      "ProjectId": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
-      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-      "User": {
-        "id": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-        "name": "userA3",
-        "image": "K"
-      },
-      "Account": {
-        "id": "63c1e0da-5cbf-4bf2-bfd6-6208de7ff3d3",
-        "name": "accountA3",
-        "image": "image"
-      },
-      "Contact": {
-        "id": "a98b92de-2e7f-49fa-8874-2882b3954733",
-        "name": "contacA3",
-        "image": "88 image"
-      },
-      "Project": {
-        "id": "15b0ec7c-d5c8-46b2-8fd5-0ea4688f1f2c",
-        "name": "projectA3"
-      }
-    }
-  ]
-}
-```
+<%= partial "/includes/quotations/getData.md.erb"%>
+
 This endpoint retrieves quotations from a specific company.
 ### HTTP Request
 <span class="method-get">GET</span>`/v1/companies/:companyId/quotations`
@@ -600,54 +335,8 @@ User  | Forbidden.
 
 ## Get Products from a Specific Company `root`
 
-```json
-{
-  "status": {
-    "status": 200,
-    "message": "OK"
-  },
-  "data": [
-    {
-      "id": "0f351ea4-2928-4a7e-b5ee-7ab38bb2b738",
-      "model": "modelA2",
-      "description": "22 description",
-      "cost": 100,
-      "standardPrice": 200,
-      "margin": 1.2,
-      "image": "66 image",
-      "standard": true,
-      "createdAt": "2020-02-22T05:18:38.000Z",
-      "updatedAt": "2020-02-22T05:18:38.000Z",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-      "User": {
-        "id": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-        "name": "userA3",
-        "image": "K"
-      }
-    },
-    {
-      "id": "12dc633e-eb59-47ff-b698-6044f97189c0",
-      "model": "modelA6",
-      "description": "22 description",
-      "cost": 100,
-      "standardPrice": 200,
-      "margin": 1.2,
-      "image": "66 image",
-      "standard": true,
-      "createdAt": "2020-02-22T05:21:03.000Z",
-      "updatedAt": "2020-02-22T05:21:03.000Z",
-      "CompanyId": "6a90770b-c6ed-4692-815a-6a45ba7594c6",
-      "UserId": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-      "User": {
-        "id": "3be8a975-5496-4d76-b61d-eeb913f92ffa",
-        "name": "userA3",
-        "image": "K"
-      }
-    }
-  ]
-}
-```
+<%= partial "/includes/products/getData.md.erb"%>
+
 This endpoint retrieves products from a specific company.
 ### HTTP Request
 <span class="method-get">GET</span>`/v1/companies/:companyId/products`

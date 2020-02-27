@@ -1,0 +1,23 @@
+# PDF
+
+## Get PDF file from a specific quotation
+
+<%= partial "/includes/pdfs/getOne.md.erb"%>
+
+This endpoint retrieves specific quotation pdf file
+### HTTP Request
+<span class="method-get">GET</span> `/v1/pdfs/quotations/:id`
+
+### Access Permission
+Role | Scope
+---- | -----
+Root | Forbidden.
+Admin | Full permission
+User  | Full permission
+
+<aside class="notice">
+Should set header for localize support, <code>en_US</code> is default language.
+For example <code>Accept-Language zh_TW</code>
+</aside>
+[ISO Language Code Table](http://www.lingoes.net/en/translator/langcode.htm)
+
